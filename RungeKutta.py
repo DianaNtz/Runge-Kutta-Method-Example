@@ -9,3 +9,5 @@ dt=0.12
 steps=int((tfinal-t0)/dt)
 u0=0.0000001
 a=6
+def f(t,u):
+    return -(t-a)*u
