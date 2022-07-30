@@ -22,3 +22,4 @@ for i in range(0,steps+1):
     k1=dt*f(tn,un2)
     k2=dt*f(tn+0.5*dt,un2+0.5*k1)
     un2=un2+k2
+    tn=tn+dt
