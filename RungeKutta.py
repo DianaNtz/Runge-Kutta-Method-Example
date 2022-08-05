@@ -1,14 +1,18 @@
 """
-@author: Diana Nitzschke
+The code below was written by @author: https://github.com/DianaNtz and is an 
+implementation of the second, third and fourth order Runge Kutta algorithm. 
+It solves the differential equation u'=-(t-a)u.
 """
 import numpy as np
 import matplotlib.pyplot as plt
+#some initial values
 t0=0
 tfinal=10
 dt=0.12
 steps=int((tfinal-t0)/dt)
 u0=0.0000001
 a=6
+#differential equation function f
 def f(t,u):
     return -(t-a)*u
 t=np.empty(steps+1, dtype='double')
@@ -40,7 +44,9 @@ for i in range(0,steps+1):
     k4=dt*f(tn+dt,un4+k3)
     un4=un4+k2*(2/6)+k1*(1/6)+k3*(2/6)+k4*(1/6)
     tn=tn+dt
+#analytical solution
 ua=u0*np.exp(-0.5*(t-a*2)*t)
+#plotting analytical vs numerical solutions
 ax1 = plt.subplots(1, sharex=True, figsize=(10,5))          
 plt.plot(t,ua,color='black',linestyle='-',linewidth=3,label="$u_a(t)$")
 plt.plot(t,u2,color='yellow',linestyle='-.',linewidth=3,label="$u_2(t)$")
